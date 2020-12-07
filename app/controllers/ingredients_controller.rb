@@ -14,6 +14,13 @@ class IngredientsController < ApplicationController
 
   # POST: /ingredients
   post "/ingredients" do
+    if params[:recipe][:name].empty?
+      @ingredient = Ingredient.create(params[:ingredient])
+    else
+      @ingredient = Ingredient.create(params[:ingredient])
+      @recipe = Recipe.create(params[:recipe])
+      @recipe.ingredients << @ingredient
+    end
     redirect "/ingredients"
   end
 
