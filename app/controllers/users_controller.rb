@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
+    set_user
     erb :"/users/show.html"
   end
 
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by_id(session[:id])
+    @user = User.find_by_id(session[:user_id])
   end
 
   def get_errors

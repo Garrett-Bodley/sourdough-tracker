@@ -1,1 +1,18 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%=@user.username%> </h1>
+
+<p>
+  <h4>Your Recipes:</h4>
+  <ol>
+    <%@user.recipes.each do |recipe|%>
+      <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </li>
+    <%end%>
+  </ol>
+</p>
+<p>
+  <h4>Your Ingredients:</h4>
+  <ol>
+    <%@user.ingredients.each do |ingredient|%>
+      <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+    <%end%>
+  </ol>
+</p>
