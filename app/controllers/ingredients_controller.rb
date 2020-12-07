@@ -34,6 +34,9 @@ class IngredientsController < ApplicationController
 
   # DELETE: /ingredients/5/delete
   delete "/ingredients/:id/delete" do
+    binding.pry
+    set_ingredient
+    @ingredient.destroy
     redirect "/ingredients"
   end
 

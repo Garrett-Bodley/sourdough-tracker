@@ -4,7 +4,7 @@
 <%=@ingredient.description%>
 </div>
 
-<form method="post" action="/ingredients/<%=@ingredient.slug%>">
+<form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input id="Delete" type="submit" value="Delete">
 </form>
