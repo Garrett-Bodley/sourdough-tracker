@@ -1,1 +1,10 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%=@ingredient.name%></h1>
+
+<div>
+<%=@ingredient.description%>
+</div>
+
+<form method="post" action="/ingredients/<%=@ingredient.slug%>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input id="Delete" type="submit" value="Delete">
+</form>

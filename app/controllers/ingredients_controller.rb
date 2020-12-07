@@ -18,6 +18,7 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients/5
   get "/ingredients/:id" do
+    set_ingredient
     erb :"/ingredients/show.html"
   end
 
