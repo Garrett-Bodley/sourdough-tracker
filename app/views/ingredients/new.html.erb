@@ -1,9 +1,23 @@
 <h1>Create a new Ingredient:</h1>
-
+<br>
 <form method="POST" action="/ingredients">
-  <label for="name">Name:</label>
-  <input id="name" type="text" name="ingredient[name]"><br>
-  <label for="description">Description:</label>
-  <input id="description" type="textarea" name="ingredient[description]"><br>
+  <p>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="ingredient[name]">
+  </p>
+  <p>
+    <label for="description">Description:</label>
+    <input id="description" type="textarea" name="ingredient[description]">
+  </p>
+
+  <p>
+    <h4>Select recipes where this ingredient is used:</h4>
+    <br>
+    <p>
+      <%@recipes.each do |recipe|%>
+        <input type="checkbox" id=<%=recipe.id%> value=<%=recipe.id%> name="ingredient[recipe_ids][]"> <%=recipe.name%><br>
+      <%end%>
+    </p>
+  </p>
   <input id="make ingredient" type="submit" value="Make Ingredient">
 </form>
