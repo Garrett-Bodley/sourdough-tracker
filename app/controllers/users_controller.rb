@@ -7,12 +7,20 @@ class UsersController < ApplicationController
 
   # GET: /users/new
   get "/users/new" do
+    get_errors
     erb :"/users/new.html"
   end
 
   # POST: /users
   post "/users" do
-    redirect "/users"
+    @user = User.new(params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else 
+      session[:errors] = @user.errors.full_messages.join(". ")
+      redirect "/users/new"
+    end
   end
 
   # GET: /users/5
@@ -33,5 +41,15 @@ class UsersController < ApplicationController
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     redirect "/users"
+  end
+  private
+
+  def set_user
+    @user = User.find_by_id(session[:id])
+  end
+
+  def get_errors
+    @errors = session[:errors]
+    session[:errors] = nil
   end
 end
