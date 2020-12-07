@@ -35,4 +35,10 @@ class IngredientsController < ApplicationController
   delete "/ingredients/:id/delete" do
     redirect "/ingredients"
   end
+
+  private
+
+  def set_ingredient
+    @ingredient = Ingredient.find_by_slug(params[:id])
+  end
 end
