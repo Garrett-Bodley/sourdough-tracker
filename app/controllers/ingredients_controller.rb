@@ -8,6 +8,7 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients/new
   get "/ingredients/new" do
+    @recipes = Recipe.all
     erb :"/ingredients/new.html"
   end
 

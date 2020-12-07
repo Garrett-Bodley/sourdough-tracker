@@ -1,1 +1,9 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create a new Ingredient:</h1>
+
+<form method="POST" action="/ingredients">
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="ingredient[name]"><br>
+  <label for="description">Description:</label>
+  <input id="description" type="textarea" name="ingredient[description]"><br>
+  <input id="make ingredient" type="submit" value="Make Ingredient">
+</form>
