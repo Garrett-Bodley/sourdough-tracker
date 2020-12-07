@@ -7,5 +7,6 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use UsersController
 use IngredientsController
 use RecipesController
