@@ -3,9 +3,7 @@
 <p>
 <%=@recipe.description%>
 </p>
-</form method="GET" action="/recipes/<%=@recipe.slug%>/edit">
-  <input id="Edit" type="submit" value="Edit">
-</form> 
+<p><a href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a></p>
 <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input id="Delete" type="submit" value="Delete">
