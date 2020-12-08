@@ -2,12 +2,14 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients
   get "/ingredients" do
+    set_user
     @ingredients = Ingredient.all
     erb :"/ingredients/index.html"
   end
 
   # GET: /ingredients/new
   get "/ingredients/new" do
+    set_user
     @recipes = Recipe.all
     erb :"/ingredients/new.html"
   end
@@ -26,12 +28,14 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients/5
   get "/ingredients/:id" do
+    set_user
     set_ingredient
     erb :"/ingredients/show.html"
   end
 
   # GET: /ingredients/5/edit
   get "/ingredients/:id/edit" do
+    set_user
     erb :"/ingredients/edit.html"
   end
 
