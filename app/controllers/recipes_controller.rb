@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   # GET: /recipes
   get "/recipes" do
     set_user
-    @recipes = Recipe.all
+    @recipes = @user.recipes
     erb :"/recipes/index.html"
   end
 
