@@ -71,7 +71,10 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by_id(session[:user_id])
+    unless @user = User.find_by_id(session[:user_id])
+      session[:error_msg] = "Please Log In"
+      redirect "/users/login"
+    end
   end
 
   def get_errors
