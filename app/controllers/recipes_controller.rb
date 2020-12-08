@@ -43,4 +43,11 @@ class RecipesController < ApplicationController
     redirect "/recipes"
   end
 
+  private
+
+  def set_recipe
+    @recipe = Recipe.find_by_slug(params[:id])
+  end
+
+
 end
