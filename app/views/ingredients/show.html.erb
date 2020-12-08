@@ -1,9 +1,11 @@
 <h1><%=@ingredient.name%></h1>
 
-<div>
+<p>
 <%=@ingredient.description%>
-</div>
-
+</p>
+</form method="GET" action="/ingredients/<%=@ingredient.slug%>/edit">
+  <input id="Edit" type="submit" value="Edit">
+</form> 
 <form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input id="Delete" type="submit" value="Delete">
