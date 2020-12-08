@@ -1,1 +1,19 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit your Account:</h1>
+
+<form method="POST" action="/users/<%=@user.id%>/edit">
+<input id="hidden" type="hidden" name="_method" value="patch">
+  <p>
+  <label for="username">Username:</label>
+  <input id="username" type="text" name="user[username]" value=<%=@user.username%>>
+  </p>
+  <p>
+    <label for="old_password">Old Password:</label>
+    <input id="old_password" type="password" name="old_password">
+  </p>
+  <p>
+    <label for="password">New Password:</label>
+    <input id="password" type="password" name="user[password]">
+  </p>
+
+  <input id="Submit" type="submit" value="Submit">
+</form>

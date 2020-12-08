@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    set_user
     erb :"/users/edit.html"
   end
 
