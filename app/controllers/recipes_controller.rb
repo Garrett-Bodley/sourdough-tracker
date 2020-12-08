@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
   # GET: /recipes/new
   get "/recipes/new" do
     set_user
+    @ingredients = @user.ingredients
     erb :"/recipes/new.html"
   end
 
