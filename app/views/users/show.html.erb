@@ -1,5 +1,7 @@
 <h1><%=@user.username%> </h1>
-
+<%if @success%>
+  <h3><%=@success%></h3>
+<%end%>
 <p>
   <h4>Your Recipes:</h4>
   <ol>
@@ -16,7 +18,14 @@
     <%end%>
   </ol>
 </p>
-<form method="POST" action="/users/logout">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input id="Log Out" type="submit" value="Log Out">
-</form>
+<p>
+  <form method="GET" action="/users/<%=@user.id%>/edit">
+    <input id="edit" type="submit" value="Edit User Info">
+  </form>
+</p>
+<p>
+  <form method="POST" action="/users/logout">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input id="Log Out" type="submit" value="Log Out">
+  </form>
+</p>
