@@ -14,8 +14,10 @@ class UsersController < ApplicationController
   end
 
   post "/users/login" do
-    set_user
-    @user = User.find_by_username(params[:username])
+    unless @user = User.find_by_username(params[:username])
+      session[:errors] = "Invalid login attempt"
+      redirect "/users/login"
+    end
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
