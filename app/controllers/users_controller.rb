@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   post "/users/login" do
+    set_user
     @user = User.find_by_username(params[:username])
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
@@ -27,9 +28,6 @@ class UsersController < ApplicationController
   # GET: /users/new
   get "/users/new" do
     get_errors
-    unless @user
-      redirect '/login'
-    end
     erb :"/users/new.html"
   end
 
