@@ -2,10 +2,8 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users/login" do
-    @success = session[:success_msg]
-    session.delete(:success_msg)
-    @error = session[:error_msg]
-    session.delete(:error_msg)
+    get_success_msg
+    get_errors
     erb :"/users/login"
   end
 
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
     else
-      session[:error_msg] = "Invalid login attempt"
+      session[:errors] = "Invalid login attempt"
       redirect "/users/login"
     end
   end
@@ -49,6 +47,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
+    get_success_msg
     set_user
     erb :"/users/show.html"
   end
@@ -56,11 +55,22 @@ class UsersController < ApplicationController
   # GET: /users/5/edit
   get "/users/:id/edit" do
     set_user
+    get_errors
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
+    set_user
+    unless @user.authenticate(params[:old_password])
+      session[:errors] = "Incorrect Password Given"
+      redirect "/users/#{@user.id}/edit"
+    end
+    unless @user.update(params[:user])
+      session[:errors] = "New Password fields must match"
+      redirect "/users/#{@user.id}/edit"
+    end
+    session[:success_msg] = "Password Updated!"
     redirect "/users/:id"
   end
 
@@ -72,13 +82,18 @@ class UsersController < ApplicationController
 
   def set_user
     unless @user = User.find_by_id(session[:user_id])
-      session[:error_msg] = "Please Log In"
+      session[:errors] = "Please Log In"
       redirect "/users/login"
     end
   end
 
+  def get_success_msg
+    @success = session[:success_msg]
+    session.delete(:success_msg)
+  end
+
   def get_errors
     @errors = session[:errors]
-    session[:errors] = nil
+    session.delete(:errors)
   end
 end

@@ -1,6 +1,8 @@
 <h1>Edit your Account:</h1>
-
-<form method="POST" action="/users/<%=@user.id%>/edit">
+<%if @errors%>
+  <h3><%=@errors%></h3>
+<%end%>
+<form method="POST" action="/users/<%=@user.id%>">
 <input id="hidden" type="hidden" name="_method" value="patch">
   <p>
   <label for="username">Username:</label>
@@ -13,6 +15,10 @@
   <p>
     <label for="password">New Password:</label>
     <input id="password" type="password" name="user[password]">
+  </p>
+    <p>
+    <label for="password">New Password:</label>
+    <input id="password" type="password" name="user[password_confirmation]">
   </p>
 
   <input id="Submit" type="submit" value="Submit">
