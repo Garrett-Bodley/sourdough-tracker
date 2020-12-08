@@ -2,17 +2,19 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users/login" do
+    @error = session[:error_message]
+    session.delete(:error_message)
     erb :"/users/login"
   end
 
   post "/users/login" do
-    binding.pry
     @user = User.find_by_username(params[:username])
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
     else
-      
+      session[:error_message] = "Invalid login attempt"
+      redirect "/users/login"
     end
   end
 

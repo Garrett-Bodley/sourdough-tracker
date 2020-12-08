@@ -1,5 +1,9 @@
 <h2> Please Log In:</h2>
 
+<%if @error%>
+  <h3><%=@error%></h3>
+<%end%>
+
 <form method="POST" action="/users/login">
   <label for="username">Username: </label>
   <input id="username" type="text" name="username"><br>
