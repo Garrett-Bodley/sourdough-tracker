@@ -35,4 +35,5 @@ class RecipesController < ApplicationController
   delete "/recipes/:id/delete" do
     redirect "/recipes"
   end
+
 end

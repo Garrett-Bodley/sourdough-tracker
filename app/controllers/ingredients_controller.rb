@@ -53,4 +53,5 @@ class IngredientsController < ApplicationController
   def set_ingredient
     @ingredient = Ingredient.find_by_slug(params[:id])
   end
+
 end

@@ -13,4 +13,13 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  private
+
+  def set_user
+    unless @user = User.find_by_id(session[:user_id])
+      session[:errors] = "Please Log In"
+      redirect "/users/login"
+    end
+  end
+
 end

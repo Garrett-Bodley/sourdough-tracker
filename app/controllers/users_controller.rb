@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   delete "/users/logout" do
     session.clear
-    session[:success_msg] = "Logged Out"
+    session[:success_msg] = "Succesfully Logged Out"
     redirect "/users/login"
   end
 
@@ -78,14 +78,8 @@ class UsersController < ApplicationController
   delete "/users/:id/delete" do
     redirect "/users"
   end
-  private
 
-  def set_user
-    unless @user = User.find_by_id(session[:user_id])
-      session[:errors] = "Please Log In"
-      redirect "/users/login"
-    end
-  end
+  private
 
   def get_success_msg
     @success = session[:success_msg]
