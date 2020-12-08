@@ -3,25 +3,24 @@ class IngredientsController < ApplicationController
   # GET: /ingredients
   get "/ingredients" do
     set_user
-    @ingredients = Ingredient.all
+    @ingredients = @user.ingredients
     erb :"/ingredients/index.html"
   end
 
   # GET: /ingredients/new
   get "/ingredients/new" do
     set_user
-    @recipes = Recipe.all
+    @recipes = @user.recipes
     erb :"/ingredients/new.html"
   end
 
   # POST: /ingredients
   post "/ingredients" do
+    set_user
     if params[:recipe][:name].empty?
-      @ingredient = Ingredient.create(params[:ingredient])
+      @user.add_ingredient(params[:ingredient])
     else
-      @ingredient = Ingredient.create(params[:ingredient])
-      @recipe = Recipe.create(params[:recipe])
-      @recipe.ingredients << @ingredient
+      @user.add_recipe_and_ingredient
     end
     redirect "/ingredients"
   end
@@ -46,7 +45,6 @@ class IngredientsController < ApplicationController
 
   # DELETE: /ingredients/5/delete
   delete "/ingredients/:id/delete" do
-    binding.pry
     set_ingredient
     @ingredient.destroy
     redirect "/ingredients"
