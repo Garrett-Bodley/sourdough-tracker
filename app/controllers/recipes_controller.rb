@@ -37,7 +37,9 @@ class RecipesController < ApplicationController
 
   # PATCH: /recipes/5
   patch "/recipes/:id" do
-    redirect "/recipes/:id"
+    set_recipe
+    @recipe.update(params[:recipe])
+    redirect "/recipes/#{@recipe.slug}"
   end
 
   # DELETE: /recipes/5/delete
