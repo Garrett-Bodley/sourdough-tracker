@@ -41,6 +41,8 @@ class RecipesController < ApplicationController
 
   # DELETE: /recipes/5/delete
   delete "/recipes/:id/delete" do
+    set_recipe
+    @recipe.destroy
     redirect "/recipes"
   end
 
