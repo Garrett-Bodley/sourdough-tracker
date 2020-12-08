@@ -3,6 +3,9 @@
 <%if @error%>
   <h3><%=@error%></h3>
 <%end%>
+<%if @success%>
+  <h3><%=@success%></h3>
+<%end%>
 
 <form method="POST" action="/users/login">
   <label for="username">Username: </label>

@@ -2,18 +2,26 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users/login" do
-    @error = session[:error_message]
-    session.delete(:error_message)
+    @success = session[:success_msg]
+    session.delete(:success_msg)
+    @error = session[:error_msg]
+    session.delete(:error_msg)
     erb :"/users/login"
+  end
+
+  delete "/users/logout" do
+    session.clear
+    session[:success_msg] = "Logged Out"
+    redirect "/users/login"
   end
 
   post "/users/login" do
     @user = User.find_by_username(params[:username])
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.id}"
     else
-      session[:error_message] = "Invalid login attempt"
+      session[:error_msg] = "Invalid login attempt"
       redirect "/users/login"
     end
   end
@@ -34,7 +42,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
     else 
-      session[:errors] = @user.errors.full_messages.join(". ")
+      session[:errors] = @user.errors.full_msgs.join(". ")
       redirect "/users/new"
     end
   end
