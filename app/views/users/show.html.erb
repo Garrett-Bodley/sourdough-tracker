@@ -9,6 +9,8 @@
       <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </li>
     <%end%>
   </ol>
+  <br>
+  <a href="/recipes/new"><b>Add a New Recipe</b></a>
 </p>
 <p>
   <h4>Your Ingredients:</h4>
@@ -17,6 +19,8 @@
       <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
     <%end%>
   </ol>
+  <br>
+  <a href="/ingredients/new"><b>Add a New Ingredient</b></a>
 </p>
 <p>
   <form method="GET" action="/users/<%=@user.id%>/edit">
