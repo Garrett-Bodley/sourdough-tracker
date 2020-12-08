@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
   # GET: /recipes/5/edit
   get "/recipes/:id/edit" do
     set_user
+    set_recipe
     erb :"/recipes/edit.html"
   end
 
