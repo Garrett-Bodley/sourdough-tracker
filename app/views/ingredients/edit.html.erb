@@ -1,1 +1,28 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  <h1 class="dislpay-4">Edit <%=@ingredient.name%></h1>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/ingredients/<%=@ingredient.slug%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" class="form-control" type="text" name="ingredient[name]" value=<%=@ingredient.name%>>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" class="form-control" type="textarea" name="ingredient[description]"><%=@ingredient.description%></textarea>
+    </div>
+
+    <h4>Select recipes where this ingredient is used:</h4>
+    <p>
+    <%@recipes.each do |recipe|%>
+      <div class="form-check form-check-inline">
+        <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> <%='checked' if @ingredient.recipes.include?(recipe) %> name="ingredient[recipe_ids][]"> 
+        <label class="form-check-label" for=<%=recipe.id%>> <%=recipe.name%></label>
+      </div>
+    <%end%>
+    </p>
+    <button id="edit ingredient" class="btn btn-primary" type="submit">Edit Ingredient</button>
+  </form>
+</div>
