@@ -1,10 +1,30 @@
-<h1><%=@recipe.name%></h1>
-
-<p>
-<%=@recipe.description%>
-</p>
-<p><a href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a></p>
-<form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input id="Delete" type="submit" value="Delete">
-</form>
+<div class="container">
+  <h1 class="display-4"><%=@recipe.name%></h1>
+</div>
+<hr>
+<div class="container">
+  <p class="lead">
+    <%=@recipe.description%>
+  </p>
+</div>
+<hr>
+<div class="container">
+  <h3>Ingredients:</h3>
+  <ul>
+    <%@recipe.ingredients.each do |ingredient|%>
+      <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+    <%end%>
+  </ul>
+</div>
+<hr>
+<div class="container">
+  <div class="form-group">
+    <a class="btn btn-primary btn-block" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a>
+  </div>
+  <div class="form-group">
+    <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input id="Delete" class="btn btn-primary btn-block" type="submit" value="Delete Ingredient">
+    </form>
+  </div>
+</div>
