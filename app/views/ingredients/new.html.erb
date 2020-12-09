@@ -1,35 +1,27 @@
-<h1>Create a new Ingredient:</h1>
-<br>
-<form method="POST" action="/ingredients">
-  <p>
-    <label for="name">Name:</label>
-    <input id="name" type="text" name="ingredient[name]">
-  </p>
-  <p>
-    <label for="description">Description:</label>
-    <input id="description" type="textarea" name="ingredient[description]">
-  </p>
+<div class="container">
+  <h1 class="display-4">Create a new Ingredient:</h1>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/ingredients">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" class="form-control" type="text" name="ingredient[name]">
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input id="description" class="form-control" type="textarea" name="ingredient[description]">
+    </div>
 
-  <p>
     <h4>Select recipes where this ingredient is used:</h4>
-    <br>
     <p>
-      <%@recipes.each do |recipe|%>
-        <input type="checkbox" id=<%=recipe.id%> value=<%=recipe.id%> name="ingredient[recipe_ids][]"> <%=recipe.name%><br>
-      <%end%>
+    <%@recipes.each do |recipe|%>
+      <div class="form-check form-check-inline">
+        <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> name="ingredient[recipe_ids][]"> 
+        <label class="form-check-label" for=<%=recipe.id%>> <%=recipe.name%></label>
+      </div>
+    <%end%>
     </p>
-  </p>
-  <p>
-    <h4>Create a new Recipe:</h4>
-    <br>
-    <p>
-      <label for="recipe_name">Name:</label>
-      <input id="recipe_name" type="text" name="recipe[name]">
-    </p>
-    <p>
-      <label for="recipe_description">Description</label>
-      <input id="recipe_description" type="textarea" name="recipe[description]">
-    </p>
-  </p>
-  <input id="make ingredient" type="submit" value="Make Ingredient">
-</form>
+    <button id="make ingredient" class="btn btn-primary" type="submit">Make Ingredient</button>
+  </form>
+</div>
