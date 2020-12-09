@@ -1,10 +1,20 @@
-<h1><%=@ingredient.name%></h1>
-
-<p>
-<%=@ingredient.description%>
-</p>
-<p><a href="/ingredients/<%=@ingredient.slug%>/edit">Edit Ingredient</a></p>
-<form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input id="Delete" type="submit" value="Delete">
+<div class="container">
+<h1 class="display-4"><%=@ingredient.name%></h1>
+</div>
+<div class="container">
+  <p class="lead">
+    <%=@ingredient.description.capitalize%>
+  </p>
+</div>
+<div class="container">
+  <div class="form-group">
+  <a href="/ingredients/<%=@ingredient.slug%>/edit">Edit Ingredient</a>
+  </div>
+  <div class="form-group">
+  <form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input id="Delete" type="submit" value="Delete Ingredient">
+  </div>
 </form>
+
+
