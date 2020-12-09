@@ -1,7 +1,15 @@
-<h1>Ingredients:</h1>
+<div class="container">
+  <h1 class="display-4">Ingredients:</h1>
+</div>
+<hr>
+<div class="container">
+  <ul>
+  <%@ingredients.each do |ingredient|%>
+    <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+  <%end%>
+  </ul>
+</div>
+<div class="container">
+    <a class="btn btn-primary" role="button" href='/ingredients/new'>Add a New Ingredient</a>
+</div>
 
-<ol>
-<%@ingredients.each do |ingredient|%>
-  <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
-<%end%>
-</ol>
