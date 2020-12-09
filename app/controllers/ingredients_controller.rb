@@ -17,11 +17,8 @@ class IngredientsController < ApplicationController
   # POST: /ingredients
   post "/ingredients" do
     set_user
-    if params[:recipe][:name].empty?
-      @user.add_ingredient(params[:ingredient])
-    else
-      @user.add_recipe_and_ingredient
-    end
+    binding.pry
+    @user.add_ingredient(params[:ingredient])
     redirect "/ingredients"
   end
 
