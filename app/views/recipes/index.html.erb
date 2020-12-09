@@ -1,9 +1,14 @@
-<h1>Recipes:</h1>
-
-<ol>
-<%@recipes.each do |recipe|%>
-  <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></li>
-<%end%>
-</ol>
-
-<a href="/recipes/new">Add a Recipe</a>
+<div class="container">
+  <h1 class="display-4">Recipes:</h1>
+</div>
+<hr>
+<div class="container">
+  <ul>
+    <%@recipes.each do |recipe|%>
+      <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></li>
+    <%end%>
+  </ul>
+</div>
+<div class="container">
+  <a class="btn btn-primary" role="button" href="/recipes/new">Add a New Recipe</a>
+</div>
