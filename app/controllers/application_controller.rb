@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
       session[:errors] = "Please Log In"
       redirect "/users/login"
     end
+    @user
   end
 
 end
