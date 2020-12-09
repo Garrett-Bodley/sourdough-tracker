@@ -17,7 +17,7 @@
     <h4>Select recipes where this ingredient is used:</h4>
     <p>
     <%@recipes.each do |recipe|%>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> <%='checked' if @ingredient.recipes.include?(recipe) %> name="ingredient[recipe_ids][]"> 
         <label class="form-check-label" for=<%=recipe.id%>> <%=recipe.name%></label>
       </div>
