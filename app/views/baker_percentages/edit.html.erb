@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="display-4"><%=@recipe.name%></h1>
+</div>
+<hr>
+<div class="container">
+  <h3>Please Specify A Baker's Percentages For Each Ingredient</h3>
+  <form method="POST" action="/recipes/<%=@recipe.slug%>/percentages">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <%@ingredients.each do |ingredient|%>
+
+      <div class="form-group row">
+        <label for="<%=ingredient.id%>" class="col-sm-2 col-form-label"><%=ingredient.name%> percentage:</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="<%=ingredient.id%>" name="baker_percentage[][percentage]" value=<%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage rescue ""%>>
+          <input type="hidden" name="baker_percentage[][ingredient_id]" value=<%=ingredient.id%>>
+          <input type="hidden" name="baker_percentage[][recipe_id]" value=<%=@recipe.id%>>
+        </div>
+      </div>
+
+    <%end%>
+
+    <button id="set percentage" class="btn btn-primary" type="submit">Set Percentages</button>
+  </form>
+</div>
