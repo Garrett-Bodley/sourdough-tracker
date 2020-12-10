@@ -10,7 +10,7 @@
 <div class="container">
   <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/delete">
     <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>">Return to Bake Sheet</a>
-    <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/<%=@step.id%>">Edit Step</a>
+    <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/edit">Edit Step</a>
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input id="Delete" class="btn btn-primary" type="submit" value="Delete Step">
   </form>
