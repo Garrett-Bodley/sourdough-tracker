@@ -1,3 +1,22 @@
 <div class="container">
-  <h1 class="display-4">Notate New Step</h1>
+  <h1 class="display-4">New Step for <%=@bake.recipe.name%></h1>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/steps">
+    <input id="hidden" type="hidden" name="step[bake_id]" value=<%=@bake.id%>>
+    <div class="form-group">
+      <label for="action">Action:</label>
+      <input id="action" class="form-control" name="step[action]" type="text">
+    </div>
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input id="time" class="form-control" name="step[time]" type="text" value=<%=DateTime.now.strftime("%H:%M")%>>
+    </div>
+    <div class="form-group">
+      <label for="note">Note:</label>
+      <textarea id="note" class="form-control" name="step[note]"></textarea>
+    </div>
+    <button id="add step" type="submit" class="btn btn-primary">Add Step</button>
+  </form>
 </div>
