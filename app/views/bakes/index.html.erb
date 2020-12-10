@@ -1,1 +1,23 @@
-<h1>This is the Model's index page.</h1>
+<div class="container">
+  <h3 class="display-4">Your Bakes</h3>
+</div>
+<hr>
+<div class="container">
+  <ul>
+    <%@bakes.each do |bake|%>
+      <li>
+        <a href="/bakes/<%=bake.id%>">
+          <div class="row">
+            <div class="col-3">
+              <%=bake.recipe.name%>
+            </div>
+            <div class="col-3">
+              <%=bake.date%>
+            </div>
+          </div>
+        </a>
+      </li>
+    <%end%>
+  </ul>
+  <a class="btn btn-primary" role="button" href="/bakes/new">New Bake</a>
+</div>
