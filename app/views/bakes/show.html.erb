@@ -15,12 +15,12 @@
   </ul>
 </div>
 <%if @bake.steps.count > 0%>
-  <hr>
   <div class="container">
+    <h3 class="lead">Steps:</h3>
     <%@bake.steps.each do |step|%>
       <div class="row">
         <div class="col-4">
-          <p class="lead"><%=step.action%></p>
+          <p class="lead"><a href="/bakes/<%=@bake.id%>/steps/<%=step.id%>"><%=step.action%></a></p>
         </div>
         <div class="col-4">
           <p class="lead"><%=step.time%></p>
