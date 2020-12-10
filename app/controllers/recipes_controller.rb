@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   # POST: /recipes
   post "/recipes" do
     set_user.add_recipe(params[:recipe])
-    redirect "/recipes/#{@user.recipes.last.slug}"
+    redirect "/recipes/#{@user.recipes.last.slug}/percentages/new"
   end
 
   # GET: /recipes/country-loaf/percentages/edit
