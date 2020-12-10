@@ -1,14 +1,21 @@
 <div class="container">
-  <h1 class="display-4">Recipes:</h1>
+  <h1 class="display-4">Recipes</h1>
 </div>
-<hr>
-<div class="container">
-  <ul>
-    <%@recipes.each do |recipe|%>
-      <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></li>
-    <%end%>
-  </ul>
+<div class="container lead">
+  <br>
+  <table class="table">
+    <thead class="thead">
+      <th scope="col">Recipe</th>
+      <th scope="col">Description</th>
+    </thead>
+    <tbody>
+      <%@recipes.each do |recipe|%>
+        <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td>
+        <td><%=recipe.description%></td>
+      <%end%>
+    </tbody>
+  </table>
 </div>
-<div class="container">
+<div class="container d-flex justify-content-end">
   <a class="btn btn-primary" role="button" href="/recipes/new">Add a New Recipe</a>
 </div>
