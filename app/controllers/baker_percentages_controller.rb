@@ -29,4 +29,11 @@ class BakerPercentagesController < ApplicationController
       BakerPercentage.create(percentage)
     end
   end
+
+  private
+
+  def set_recipe
+    @recipe = Recipe.find_by_slug(params[:slug])
+  end
+
 end
