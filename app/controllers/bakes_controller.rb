@@ -21,6 +21,7 @@ class BakesController < ApplicationController
   # GET: /bakes/5
   get "/bakes/:id" do
     @recipe = get_bake.recipe
+    session[:recipe_id] = @recipe.id
     erb :"/bakes/show.html"
   end
 
