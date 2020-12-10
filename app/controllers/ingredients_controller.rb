@@ -19,28 +19,27 @@ class IngredientsController < ApplicationController
   end
 
   # GET: /ingredients/5
-  get "/ingredients/:id" do
-    binding.pry
+  get "/ingredients/:slug" do
     set_user
     @recipes = set_ingredient.recipes
     erb :"/ingredients/show.html"
   end
 
   # GET: /ingredients/5/edit
-  get "/ingredients/:id/edit" do
+  get "/ingredients/:slug/edit" do
     set_user
     @recipes = set_ingredient.recipes
     erb :"/ingredients/edit.html"
   end
 
   # PATCH: /ingredients/5
-  patch "/ingredients/:id" do
+  patch "/ingredients/:slug" do
     set_ingredient.update(params[:ingredient])
-    redirect "/ingredients/:id"
+    redirect "/ingredients/:slug"
   end
 
   # DELETE: /ingredients/5/delete
-  delete "/ingredients/:id/delete" do
+  delete "/ingredients/:slug/delete" do
     set_ingredient.destroy
     redirect "/ingredients"
   end
@@ -48,7 +47,7 @@ class IngredientsController < ApplicationController
   private
 
   def set_ingredient
-    @ingredient = Ingredient.find_by_slug(params[:id])
+    @ingredient = Ingredient.find_by_slug(params[:slug])
   end
 
 end
