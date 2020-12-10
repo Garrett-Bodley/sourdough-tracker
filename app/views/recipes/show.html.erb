@@ -12,7 +12,21 @@
   <h3>Ingredients:</h3>
   <ul>
     <%@recipe.ingredients.each do |ingredient|%>
-      <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+        <li>
+          <div class="row">
+            <a class="col-4" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a>
+            <%if BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id)%>
+            <div class="col-4">
+              <%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage%>%
+            </div>
+            <%else%>
+              <div class="col-4">
+                No Percentage Given
+            </div>
+          </div>
+        </li>
+        <br>
+        <%end%>
     <%end%>
   </ul>
 </div>
