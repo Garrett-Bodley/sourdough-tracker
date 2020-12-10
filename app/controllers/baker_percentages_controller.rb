@@ -16,18 +16,15 @@ class BakerPercentagesController < ApplicationController
   patch "/recipes/:slug/percentages" do
     set_user
     set_recipe
-    params[:baker_percentage].each do |percentage|
-      BakerPercentage.update_or_create(percentage)
-    end
+    
+    params[:baker_percentage].each {|percentage| BakerPercentage.update_or_create(percentage)} unless !params[:baker_percentage]
     redirect "/recipes/#{@recipe.slug}"
   end
 
   post "/recipes/:slug/percentages" do
     set_user
     set_recipe
-    params[:baker_percentage].each do |percentage|
-      BakerPercentage.create(percentage)
-    end
+    params[:baker_percentage].each {|percentage| BakerPercentage.create(percentage)} unless !params[:baker_percentage]
     redirect "/recipes/#{@recipe.slug}"
   end
 
