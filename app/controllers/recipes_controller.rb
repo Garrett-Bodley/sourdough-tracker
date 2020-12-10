@@ -2,28 +2,25 @@ class RecipesController < ApplicationController
 
   # GET: /recipes
   get "/recipes" do
-    set_user
-    @recipes = @user.recipes
+    @recipes = set_user.recipes
     erb :"/recipes/index.html"
   end
 
   # GET: /recipes/new
   get "/recipes/new" do
-    set_user
-    @ingredients = @user.ingredients
+    @ingredients = set_user.ingredients
     erb :"/recipes/new.html"
   end
 
   # POST: /recipes
   post "/recipes" do
-    set_user
-    @user.add_recipe(params[:recipe])
-    redirect "/recipes/new/#{@user.recipes.last.slug}/percentages"
+    set_user.add_recipe(params[:recipe])
+    redirect "/recipes/#{@user.recipes.last.slug}"
   end
 
   # GET: /recipes/country-loaf/percentages/edit
   get "recipes/:slug/percentages/edit" do
-    set_recipe
+    set_user
     set_recipe
     erb :'/recipes/percentages/edit.html'
   end
@@ -44,15 +41,13 @@ class RecipesController < ApplicationController
 
   # PATCH: /recipes/country-loaf
   patch "/recipes/:slug" do
-    set_recipe
-    @recipe.update(params[:recipe])
-    redirect "/recipes/#{@recipe.slug}/percentages/edit"
+    set_recipe.update(params[:recipe])
+    redirect "/recipes/#{@recipe.slug}"
   end
 
   # DELETE: /recipes/country-loaf/delete
   delete "/recipes/:slug/delete" do
-    set_recipe
-    @recipe.destroy
+    set_recipe.destroy
     redirect "/recipes"
   end
 
