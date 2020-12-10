@@ -1,7 +1,6 @@
 <div class="container">
   <h1 class="display-4"><%=@ingredient.name%></h1>
 </div>
-<hr>
 <div class="container">
   <p class="lead">
     <%=@ingredient.description.capitalize rescue ""%>
@@ -11,11 +10,13 @@
   <div class="container">
     <table class="table lead">
       <thead class="thead"> 
-        <th>Associated Recipes</th>
+        <th scope="col">Associated Recipes</th>
+        <th scope="col">Description</th>
       </thead>
       <tbody>
       <%@recipes.each do |recipe|%>
         <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td>
+        <td><%=recipe.description%></td>
       <%end%>
       </tbody>
     </table>
