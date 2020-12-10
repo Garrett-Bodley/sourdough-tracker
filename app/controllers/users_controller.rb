@@ -70,8 +70,8 @@ class UsersController < ApplicationController
       session[:errors] = "New Password fields must match"
       redirect "/users/#{@user.id}/edit"
     end
-    session[:success_msg] = "Password Updated!"
-    redirect "/users/:id"
+    session[:success_msg] = "Account Updated!"
+    redirect "/users/#{@user.id}"
   end
 
   # DELETE: /users/5/delete
