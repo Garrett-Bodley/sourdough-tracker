@@ -13,8 +13,8 @@
     <%@ingredients.each do |ingredient|%>
 
       <div class="form-group row">
-        <label for="<%=ingredient.id%>" class="col-sm-2 col-form-label"><%=ingredient.name%> percentage:</label>
-        <div class="col-sm-10">
+        <label for="<%=ingredient.id%>" class="col-3 col-form-label"><%=ingredient.name%> percentage:</label>
+        <div class="col-9">
           <input type="number" class="form-control" id="<%=ingredient.id%>" name="baker_percentage[][percentage]">
           <input type="hidden" name="baker_percentage[][ingredient_id]" value=<%=ingredient.id%>>
           <input type="hidden" name="baker_percentage[][recipe_id]" value=<%=@recipe.id%>>

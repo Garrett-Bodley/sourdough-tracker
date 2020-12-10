@@ -1,7 +1,7 @@
 class BakerPercentagesController < ApplicationController
 
   # GET: /recipes/country-loaf/percentages
-  get "/recipes/:slug/percentages" do
+  get "/recipes/:slug/percentages/new" do
     set_user
     @ingredients = set_recipe.ingredients
     erb :'baker_percentages/new.html'
@@ -28,6 +28,7 @@ class BakerPercentagesController < ApplicationController
     params[:baker_percentage].each do |percentage|
       BakerPercentage.create(percentage)
     end
+    redirect "/recipes/#{@recipe.slug}"
   end
 
   private
