@@ -1,1 +1,27 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  <h3 class="display-4">Edit Bake Info</h3>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/bakes/<%=@bake.id%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input id="hidden" type="hidden" name="bake[user_id]" value=<%=@user.id%>>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input id="date" class="form-control" type="text" name="bake[date]" value="<%=@bake.date%>">
+      </div>
+      <div class="form-group">
+        <label for="recipe">Select a Recipe:</label>
+        <select class="custom-select" name="bake[recipe_id]" id="recipe">
+          <%@recipes.each do |recipe|%>
+            <option name="bake[recipe]" value=<%=recipe.id%> <%='selected' if recipe == @bake.recipe%>><%=recipe.name%> </option>
+          <%end%>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="weight">Total Flour Weight:</label>
+        <input id="weight" class="form-control" type="number" name="bake[weight]" value="<%=@bake.weight%>">
+      </div>
+    <button id="make bake" class="btn btn-primary" type="submit">Edit</button>
+  </form>
+</div>

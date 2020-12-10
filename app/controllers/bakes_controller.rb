@@ -13,20 +13,25 @@ class BakesController < ApplicationController
 
   # POST: /bakes
   post "/bakes" do
-    binding.pry
     bake = Bake.create(params[:bake])
     redirect "/bakes/#{bake.id}"
+  end
+
+  patch "/bakes/:id" do
+    get_bake.update(params[:bake])
+    redirect "/bakes/#{@bake.id}"
   end
 
   # GET: /bakes/5
   get "/bakes/:id" do
     @recipe = get_bake.recipe
-    session[:recipe_id] = @recipe.id
     erb :"/bakes/show.html"
   end
 
   # GET: /bakes/5/edit
   get "/bakes/:id/edit" do
+    @recipes = set_user.recipes
+    get_bake
     erb :"/bakes/edit.html"
   end
 
