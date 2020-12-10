@@ -18,7 +18,7 @@ class StepsController < ApplicationController
   end
 
   # GET: /steps/5
-  get "bakes/:id/steps/:step_id" do
+  get "/bakes/:id/steps/:step_id" do
     set_bake
     set_step
     erb :"/steps/show.html"
