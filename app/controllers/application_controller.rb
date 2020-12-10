@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    set_user
     erb :welcome
   end
 
