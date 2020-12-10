@@ -4,6 +4,7 @@
 <hr>
 <div class="container">
   <form method="POST" action="/recipes">
+    <input id="hidden" type="hidden" name="recipe[user_id]" value=<%=@user.id%>>
     <div class="form-group">
       <label for="name">Name:</label>
       <input id="name" class="form-control" type="text" name="recipe[name]">

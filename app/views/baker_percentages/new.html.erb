@@ -18,6 +18,7 @@
           <input type="number" class="form-control" id="<%=ingredient.id%>" name="baker_percentage[][percentage]">
           <input type="hidden" name="baker_percentage[][ingredient_id]" value=<%=ingredient.id%>>
           <input type="hidden" name="baker_percentage[][recipe_id]" value=<%=@recipe.id%>>
+          <input type="hidden" name="baker_percentage[][user_id]" value=<%=@user.id%>>
         </div>
       </div>
 

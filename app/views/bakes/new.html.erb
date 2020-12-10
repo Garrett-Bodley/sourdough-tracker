@@ -4,6 +4,7 @@
 <hr>
 <div class="container">
   <form method="POST" action="/bakes">
+    <input id="hidden" type="hidden" name="bake[user_id]" value=<%=@user.id%>>
       <div class="form-group">
         <label for="date">Date:</label>
         <input id="date" class="form-control" type="text" name="bake[date]">
