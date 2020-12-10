@@ -1,1 +1,21 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div class="container">
+  <h3 class="display-4">It's a great day to bake!</h3>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/bakes">
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input id="date" class="form-control" type="text" name="bake[date]">
+      </div>
+      <div class="form-group">
+        <select class="custom-select" id="recipe">
+          <option selected>Select a recipe</option>
+          <%@recipes.each do |recipe|%>
+            <option name="bake[recipe]" value=<%=recipe.id%>><%=recipe.name%> </option>
+          <%end%>
+        </select>
+      </div>
+    <button id="make bake" class="btn btn-primary" type="submit">Start Baking</button>
+  </form>
+</div>
