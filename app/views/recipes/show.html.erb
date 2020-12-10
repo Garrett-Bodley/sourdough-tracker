@@ -32,13 +32,9 @@
 </div>
 <hr>
 <div class="container">
-  <div class="form-group">
-    <a class="btn btn-primary btn-block" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a>
-  </div>
-  <div class="form-group">
-    <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input id="Delete" class="btn btn-primary btn-block" type="submit" value="Delete Ingredient">
-    </form>
-  </div>
+  <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
+    <a class="btn btn-primary btn-sml" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a>
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input id="Delete" class="btn btn-primary btn-sml" type="submit" value="Delete Ingredient">
+  </form>
 </div>
