@@ -7,7 +7,6 @@
     <%=@recipe.description%>
   </p>
 </div>
-<hr>
 <div class="container">
   <h3>Ingredients:</h3>
   <ul>
@@ -35,7 +34,8 @@
   <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
     <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe Ingredients</a>
     <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/percentages/edit">Edit Ingredient Percentages</a>
+    <a class="btn btn-primary" role="button" href='/ingredients/new'>Create a New Ingredient</a>
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input id="Delete" class="btn btn-primary" type="submit" value="Delete Ingredient">
+    <input id="Delete" class="btn btn-primary" type="submit" value="Delete Recipe">
   </form>
 </div>
