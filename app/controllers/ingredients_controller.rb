@@ -20,6 +20,7 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients/5
   get "/ingredients/:id" do
+    binding.pry
     set_user
     @recipes = set_ingredient.recipes
     erb :"/ingredients/show.html"
