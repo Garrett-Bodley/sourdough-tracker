@@ -24,6 +24,7 @@ class BakesController < ApplicationController
 
   # GET: /bakes/5
   get "/bakes/:id" do
+    set_user
     @recipe = get_bake.recipe
     erb :"/bakes/show.html"
   end
