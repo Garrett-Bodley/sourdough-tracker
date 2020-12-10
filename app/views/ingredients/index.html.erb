@@ -1,15 +1,33 @@
 <div class="container">
   <h1 class="display-4">Ingredients:</h1>
 </div>
-<hr>
 <div class="container">
-  <ul>
-  <%@ingredients.each do |ingredient|%>
-    <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
-  <%end%>
-  </ul>
+<br>
+  <table class="table lead">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Ingredient</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%@ingredients.each do |ingredient|%>
+          <tr>
+            <a href="/ingredients/<%=ingredient.slug%>">
+              <td>
+                <a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a>
+              </td>
+              <td>
+                <%=ingredient.description%>
+              </td>
+            </a>
+          </tr>
+    <%end%>
+    </tbody>
+  </table>
 </div>
-<div class="container">
+<hr>
+<div class="container d-flex justify-content-end">
     <a class="btn btn-primary" role="button" href='/ingredients/new'>Add a New Ingredient</a>
 </div>
 
