@@ -2,6 +2,7 @@ class BakesController < ApplicationController
 
   # GET: /bakes
   get "/bakes" do
+    @bakes = set_user.bakes
     erb :"/bakes/index.html"
   end
 
