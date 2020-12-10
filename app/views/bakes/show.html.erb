@@ -1,1 +1,22 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  <h1 class="display-4">
+    Baking a <%=@recipe.name%>
+    <br>
+    <%=@bake.date%>
+  </h1 class="display-4">
+</div>
+<hr>
+<div class="container">
+  <h3 class="lead">Recipe:</h3>
+  <ul class="lead">
+    <%@recipe.ingredients.each do |ingredient|%>
+      <li><%=ingredient.name%></li>
+    <%end%>
+  </ul>
+</div>
+<%if @bake.steps.count > 0%>
+
+<%end%>
+<div class="container">
+  <a class="btn btn-primary" role="button" href="/steps/new">Add a Step</a>
+</div>

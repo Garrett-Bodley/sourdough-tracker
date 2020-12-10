@@ -7,16 +7,20 @@ class BakesController < ApplicationController
 
   # GET: /bakes/new
   get "/bakes/new" do
+    @recipes = set_user.recipes
     erb :"/bakes/new.html"
   end
 
   # POST: /bakes
   post "/bakes" do
-    redirect "/bakes"
+    binding.pry
+    bake = Bake.create(params[:bake])
+    redirect "/bakes/#{bake.id}"
   end
 
   # GET: /bakes/5
   get "/bakes/:id" do
+    @recipe = get_bake.recipe
     erb :"/bakes/show.html"
   end
 
@@ -34,4 +38,11 @@ class BakesController < ApplicationController
   delete "/bakes/:id/delete" do
     redirect "/bakes"
   end
+
+  private
+
+  def get_bake
+    @bake = Bake.find(params[:id])
+  end
+
 end
