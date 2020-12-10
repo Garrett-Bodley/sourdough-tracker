@@ -7,6 +7,7 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use StepsController
 use BakerPercentagesController
 use BakesController
 use UsersController
