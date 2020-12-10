@@ -1,1 +1,16 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  <h1 class="display-4"><%="#{@step.action} for #{@bake.recipe.name}"%></h1>
+</div>
+<hr>
+<div class="container">
+  <p class="lead"><%=@step.note%></p>
+  <p class="lead">at</p>
+  <p class="lead"><%=@step.time%></p>
+</div>
+<div class="container">
+  <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/delete">
+      <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/<%=@step.id%>">Edit Step</a>
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input id="Delete" class="btn btn-primary" type="submit" value="Delete Step">
+  </form>
+</div>
