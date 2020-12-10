@@ -1,35 +1,41 @@
-<h1><%=@user.username%> </h1>
+<div class="container">
+  <h1 class="display-4"><%=@user.username%> </h1>
+</div>
 <%if @success%>
-  <h3><%=@success%></h3>
+  <div class="container">
+    <h3 class="lead"><%=@success%></h3>
+  </div>
 <%end%>
-<p>
-  <h4>Your Recipes:</h4>
+<hr>
+<div class="container">
+  <h4 class="lead">Your Recipes:</h4>
   <ol>
     <%@user.recipes.each do |recipe|%>
-      <li><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </li>
+      <li><a href="/recipes/<%=recipe.slug%>" class="lead"><%=recipe.name%></a> </li>
     <%end%>
   </ol>
-  <br>
-  <a href="/recipes/new"><b>Add a New Recipe</b></a>
-</p>
-<p>
-  <h4>Your Ingredients:</h4>
+  <a href="/recipes/new" role="button" class="btn btn-primary m-1">Add a New Recipe</a>
+</div>
+<hr>
+<div class="container">
+  <h4 class="lead">Your Ingredients:</h4>
   <ol>
     <%@user.ingredients.each do |ingredient|%>
-      <li><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+      <li><a class="lead" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
     <%end%>
   </ol>
-  <br>
-  <a href="/ingredients/new"><b>Add a New Ingredient</b></a>
-</p>
-<p>
-  <form method="GET" action="/users/<%=@user.id%>/edit">
-    <input id="edit" type="submit" value="Edit User Info">
-  </form>
-</p>
-<p>
-  <form method="POST" action="/users/logout">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input id="Log Out" type="submit" value="Log Out">
-  </form>
-</p>
+  <a href="/ingredients/new" role="button" class="btn btn-primary m-1">Add a New Ingredient</a>
+</div>
+
+<hr>
+<div class="container">
+  <div class="btn-group">
+    <form method="GET" action="/users/<%=@user.id%>/edit">
+      <button id="edit" class="btn btn-primary m-1" type="submit">Edit User Info</button>
+    </form>
+    <form method="POST" action="/users/logout">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <button id="Log Out" class="btn btn-primary m-1" type="submit">Log Out</button>
+    </form>
+  </div>
+</div>
