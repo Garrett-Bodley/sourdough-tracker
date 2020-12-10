@@ -18,32 +18,39 @@ class RecipesController < ApplicationController
   post "/recipes" do
     set_user
     @user.add_recipe(params[:recipe])
-    redirect "/recipes/#{@user.recipes.last.slug}"
+    redirect "/recipes/new/#{@user.recipes.last.slug}/percentages"
   end
 
-  # GET: /recipes/5
-  get "/recipes/:id" do
+  # GET: /recipes/country-loaf/percentages/edit
+  get "recipes/:slug/percentages/edit" do
+    set_recipe
+    set_recipe
+    erb :'/recipes/percentages/edit.html'
+  end
+
+  # GET: /recipes/country-loaf
+  get "/recipes/:slug" do
     set_user
     set_recipe
     erb :"/recipes/show.html"
   end
 
-  # GET: /recipes/5/edit
-  get "/recipes/:id/edit" do
-    set_user
+  # GET: /recipes/country-loaf/edit
+  get "/recipes/:slug/edit" do
+    @ingredients = set_user.ingredients
     set_recipe
     erb :"/recipes/edit.html"
   end
 
-  # PATCH: /recipes/5
-  patch "/recipes/:id" do
+  # PATCH: /recipes/country-loaf
+  patch "/recipes/:slug" do
     set_recipe
     @recipe.update(params[:recipe])
-    redirect "/recipes/#{@recipe.slug}"
+    redirect "/recipes/#{@recipe.slug}/percentages/edit"
   end
 
-  # DELETE: /recipes/5/delete
-  delete "/recipes/:id/delete" do
+  # DELETE: /recipes/country-loaf/delete
+  delete "/recipes/:slug/delete" do
     set_recipe
     @recipe.destroy
     redirect "/recipes"
@@ -52,8 +59,7 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find_by_slug(params[:id])
+    @recipe = Recipe.find_by_slug(params[:slug])
   end
-
 
 end
