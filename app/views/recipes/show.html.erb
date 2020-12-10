@@ -33,7 +33,8 @@
 <hr>
 <div class="container">
   <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
-    <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a>
+    <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe Ingredients</a>
+    <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/percentages/edit">Edit Ingredient Percentages</a>
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input id="Delete" class="btn btn-primary" type="submit" value="Delete Ingredient">
   </form>
