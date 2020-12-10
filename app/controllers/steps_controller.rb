@@ -6,17 +6,21 @@ class StepsController < ApplicationController
   end
 
   # GET: /steps/new
-  get "/steps/new" do
+  get "/bakes/:id/steps/new" do
+    set_bake
     erb :"/steps/new.html"
   end
 
   # POST: /steps
   post "/steps" do
-    redirect "/steps"
+    @step = Step.create(params[:step])
+    redirect "/bakes/#{@step.bake.id}"
   end
 
   # GET: /steps/5
-  get "/steps/:id" do
+  get "bakes/:id/steps/:step_id" do
+    set_bake
+    set_step
     erb :"/steps/show.html"
   end
 
@@ -34,4 +38,15 @@ class StepsController < ApplicationController
   delete "/steps/:id/delete" do
     redirect "/steps"
   end
+
+  private
+
+  def set_bake
+    @bake = Bake.find(params[:id])
+  end
+
+  def set_step
+    @step = Step.find(params[:step_id])
+  end
+
 end
