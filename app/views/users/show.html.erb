@@ -2,29 +2,40 @@
   <h1 class="display-4"><%=@user.username%> </h1>
 </div>
 <%if @success%>
-  <div class="container">
-    <h3 class="lead"><%=@success%></h3>
+  <div class="container lead">
+    <h3><<%=@success%></h3>
   </div>
 <%end%>
 <hr>
-<div class="container">
-  <h4 class="lead">Your Recipes:</h4>
-  <ol>
-    <%@user.recipes.each do |recipe|%>
-      <li><a href="/recipes/<%=recipe.slug%>" class="lead"><%=recipe.name%></a> </li>
-    <%end%>
-  </ol>
-  <a href="/recipes/new" role="button" class="btn btn-primary m-1">Add a New Recipe</a>
+<div class="container lead">
+  <table class="table">
+    <thead class="thead">
+      <th scope="col">Recipes:</th>
+    </thead>
+    <tbody>
+      <%@user.recipes.each do |recipe|%>
+        <tr><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end">
+    <a href="/recipes/new" role="button" class="btn btn-primary m-1">Add a New Recipe</a>
+  </div>
 </div>
-<hr>
-<div class="container">
-  <h4 class="lead">Your Ingredients:</h4>
-  <ol>
+<div class="container lead">
+  <table class="table">
+    <thead class="thead">
+      <th scope="col">Ingredients:</th>
+    </thead>
+    <tbody>
     <%@user.ingredients.each do |ingredient|%>
-      <li><a class="lead" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></li>
+      <tr><td><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></td></tr>
     <%end%>
-  </ol>
-  <a href="/ingredients/new" role="button" class="btn btn-primary m-1">Add a New Ingredient</a>
+    </tbody>
+  <table>
+  <div class="d-flex justify-content-end">
+    <a href="/ingredients/new" role="button" class="btn btn-primary m-1">Add a New Ingredient</a>
+  </div>
 </div>
 
 <hr>
