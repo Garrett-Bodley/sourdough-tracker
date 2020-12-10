@@ -1,18 +1,26 @@
-<h2> Please Log In:</h2>
-
+<div class="container">
+  <h2 class="display-4"> Please Log In:</h2>
+</div>
 <%if @errors%>
-  <h3><%=@errors%></h3>
+  <div class="container">
+    <h3><%=@errors%></h3>
+  </div>
+  <hr>
 <%end%>
 <%if @success%>
-  <h3><%=@success%></h3>
+  <div class="container">
+    <h3><%=@success%></h3>
+  </div>
+  <hr>
 <%end%>
-
-<form method="POST" action="/users/login">
-  <label for="username">Username: </label>
-  <input id="username" type="text" name="username"><br>
-  <label for="password">Password:</label>
-  <input id="password" type="password" name="password">
-  <br>
-  <br>
-  <input id="submit" type="submit" value="Submit">
-</form>
+<div class="container">
+  <form method="POST" action="/users/login">
+    <label for="username">Username: </label>
+    <input id="username" class="form-control" type="text" name="username"><br>
+    <label for="password">Password:</label>
+    <input id="password" class="form-control" type="password" name="password">
+    <br>
+    <br>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
