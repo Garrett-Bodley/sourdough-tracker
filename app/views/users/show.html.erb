@@ -6,15 +6,15 @@
     <h3><<%=@success%></h3>
   </div>
 <%end%>
-<hr>
 <div class="container lead">
+  <br>
   <table class="table">
     <thead class="thead">
       <th scope="col">Recipes:</th>
     </thead>
     <tbody>
       <%@user.recipes.each do |recipe|%>
-        <tr><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </tr>
+        <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </td>
       <%end%>
     </tbody>
   </table>
@@ -23,6 +23,7 @@
   </div>
 </div>
 <div class="container lead">
+  <br>
   <table class="table">
     <thead class="thead">
       <th scope="col">Ingredients:</th>
@@ -36,17 +37,9 @@
   <div class="d-flex justify-content-end">
     <a href="/ingredients/new" role="button" class="btn btn-primary m-1">Add a New Ingredient</a>
   </div>
-</div>
-
-<hr>
-<div class="container">
-  <div class="btn-group">
+  <div class="form-group d-flex justify-content-end">
     <form method="GET" action="/users/<%=@user.id%>/edit">
       <button id="edit" class="btn btn-primary m-1" type="submit">Edit User Info</button>
-    </form>
-    <form method="POST" action="/users/logout">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <button id="Log Out" class="btn btn-primary m-1" type="submit">Log Out</button>
     </form>
   </div>
 </div>
