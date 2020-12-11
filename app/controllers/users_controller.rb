@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   get "/users/login" do
     get_success_msg
     get_errors
-    erb :"/users/login/html"
+    erb :"/users/login.html"
   end
 
   delete "/users/logout" do
@@ -80,7 +80,9 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    set_user.destroy
+    session[:success_msg] = "Account Deleted"
+    redirect "/users/login"
   end
 
   private
