@@ -15,7 +15,7 @@ class BakesController < ApplicationController
 
   # POST: /bakes
   post "/bakes" do
-    if params[:bake][:recipe] = "..." || params[:bake][:weight].empty?
+    if params[:bake][:recipe_id] == "..." || params[:bake][:weight].empty?
       session[:errors] = "Please fill out every field"
       redirect "/bakes/new"
     end
