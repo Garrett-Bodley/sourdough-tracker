@@ -35,7 +35,7 @@ class IngredientsController < ApplicationController
   # PATCH: /ingredients/5
   patch "/ingredients/:slug" do
     set_ingredient.update(params[:ingredient])
-    redirect "/ingredients/:slug"
+    redirect "/ingredients/#{@ingredient.slug}"
   end
 
   # DELETE: /ingredients/5/delete
