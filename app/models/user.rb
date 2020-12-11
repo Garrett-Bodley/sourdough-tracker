@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :recipes
-  has_many :ingredients
-  has_many :recipes_ingredients
-  has_many :bakes
-  has_many :baker_percentages
+  has_many :recipes, dependent: :destroy
+  has_many :ingredients, dependent: :destroy
+  has_many :recipes_ingredients, dependent: :destroy
+  has_many :bakes, dependent: :destroy
+  has_many :baker_percentages, dependent: :destroy
   has_secure_password
   validates :username, uniqueness: :true, presence: :true
   validates :password, presence: :true
@@ -28,5 +28,15 @@ class User < ActiveRecord::Base
       self.add_recipe(params[:recipe])
       self.recipes.last.ingredients << self.ingredients.last
     end
+  end
+
+  after_create(:starter_ingredients)
+
+  def starter_ingredients
+    self.ingredients << Ingredient.create(name: "Bread Flour", description: "Flour with a higher than average protein content")
+    self.ingredients << Ingredient.create(name: "Starter", description: "A live culture of lactobacilli, acetobacilli, and yeast used as a leavening agent")
+    self.ingredients << Ingredient.create(name: "Whole Wheat Flour", description: "Milled from the entire wheat berry. It absorbs more water and can make the dough stickier when handling")
+    self.ingredients << Ingredient.create(name: "Water", description: "Plain tap water")
+    self.ingredients << Ingredient.create(name: "Salt", description: "Regular table salt")
   end
 end
