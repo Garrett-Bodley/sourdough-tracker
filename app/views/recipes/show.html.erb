@@ -2,32 +2,29 @@
   <h1 class="display-4"><%=@recipe.name%></h1>
 </div>
 <hr>
-<div class="container">
-  <p class="lead">
-    <%=@recipe.description%>
-  </p>
+<div class="container lead">
+  <%=@recipe.description%>
 </div>
 <div class="container">
-  <h3>Ingredients:</h3>
-  <ul>
-    <%@recipe.ingredients.each do |ingredient|%>
-        <li>
-          <div class="row">
-            <a class="col-4" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a>
-            <%if BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id)%>
-            <div class="col-4">
-              <%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage%>%
-            </div>
-            <%else%>
-              <div class="col-4">
-                No Percentage Given
-            </div>
-          </div>
-        </li>
-        <br>
+  <table class="table">
+    <br>
+    <thead class="thead">
+      <th scope="col">Ingredients</th>
+      <th scope="col">Baker's Percentage</th>
+    </thead>
+    <tbody>
+      <%@recipe.ingredients.each do |ingredient|%>
+        <tr>
+        <td><a class="col-4" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></td>
+        <%if BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id)%>
+          <td><%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage%></td>
+        <%else%>
+          <td>No Percentage Given</td>
         <%end%>
-    <%end%>
-  </ul>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
 <hr>
 <div class="container">
