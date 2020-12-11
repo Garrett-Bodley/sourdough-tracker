@@ -35,6 +35,10 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
+    if /\W/.match?(params[:user][:username])
+      session[:errors] = "Usernames can only use letters and underscore"
+      redirect "users/new"
+    end
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
