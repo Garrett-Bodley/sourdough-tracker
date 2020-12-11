@@ -1,14 +1,16 @@
 <div class="container">
-  <h1 class="display-4"><%="#{@step.action} for #{@bake.recipe.name}"%></h1>
+  <h1 class="display-4"><%=@step.action%></h1>
 </div>
 <hr>
 <div class="container">
-  <p class="lead"><%=@step.note%></p>
-  <p class="lead">at</p>
-  <p class="lead"><%=@step.time%></p>
+  <%if !@step.note.empty?%>
+    <p class="lead"><%=@step.note%> (<%=@step.time%>)</p>
+  <%else%>
+    <p class="lead"><%=@step.time%></p>
+  <%end%>
 </div>
 <div class="container">
-  <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/delete">
+  <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>">
     <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>">Return to Bake Sheet</a>
     <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/edit">Edit Step</a>
     <input id="hidden" type="hidden" name="_method" value="delete">
