@@ -2,16 +2,18 @@
   <h2 class="display-4"> Please Log In:</h2>
 </div>
 <%if @errors%>
-  <div class="container">
-    <h3><%=@errors%></h3>
+  <div class="alert alert-danger alert-dismissable" role="alert">
+    <%=@errors%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
   </div>
-  <hr>
 <%end%>
 <%if @success%>
-  <div class="container">
-    <h3><%=@success%></h3>
+  <div class="alert alert-success alert-dismissable" role="alert">
+    <%=@success%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
   </div>
-  <hr>
 <%end%>
 <div class="container">
   <form method="POST" action="/users/login">
