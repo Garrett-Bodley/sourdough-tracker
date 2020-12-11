@@ -10,4 +10,9 @@ class BakerPercentage < ActiveRecord::Base
       found.update(hash)
     end
   end
+
+  def percentify(weight)
+    self.percentage * weight/100
+  end
+
 end
