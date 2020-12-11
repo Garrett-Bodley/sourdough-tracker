@@ -13,7 +13,7 @@
     <tbody>
       <%@bakes.each do |bake|%>
         <tr>
-          <td><a href="/recipes/<%=bake.recipe.slug%>"><%=bake.recipe.name%></a></td>
+          <td><a href="/bakes/<%=bake.id%>"><%=bake.recipe.name%></a></td>
           <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
         </tr>
       <%end%>
