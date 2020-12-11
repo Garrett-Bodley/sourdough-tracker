@@ -1,24 +1,21 @@
 class StepsController < ApplicationController
 
-  # GET: /steps
-  get "/steps" do
-    erb :"/steps/index.html"
-  end
-
-  # GET: /steps/new
+  # GET: /bakes/4/steps/new
   get "/bakes/:id/steps/new" do
+    set_user
     set_bake
     erb :"/steps/new.html"
   end
 
-  # POST: /steps
-  post "/steps" do
+  # POST: /bakes/4/steps
+  post "/bakes/:id/steps" do
     @step = Step.create(params[:step])
     redirect "/bakes/#{@step.bake.id}"
   end
 
-  # GET: /steps/5
+  # GET: /bakes/4/steps/7
   get "/bakes/:id/steps/:step_id" do
+    set_user
     set_bake
     set_step
     erb :"/steps/show.html"
@@ -26,19 +23,22 @@ class StepsController < ApplicationController
 
   # GET: /steps/5/edit
   get "/bakes/:id/steps/:step_id/edit" do
+    set_user
     set_bake
     set_step
     erb :"/steps/edit.html"
   end
 
-  # PATCH: /steps/5
-  patch "/steps/:id" do
-    redirect "/steps/:id"
+  # PATCH: /bakes/4/steps/5
+  patch "/bakes/:id/steps/:step_id" do
+    set_step.update(params[:step])
+    redirect "/bakes/#{set_bake.id}/steps/#{@step.id}"
   end
 
   # DELETE: /steps/5/delete
-  delete "/steps/:id/delete" do
-    redirect "/steps"
+  delete "/bakes/:id/steps/:step_id" do
+    set_step.destroy
+    redirect "/bakes/#{set_bake.id}"
   end
 
   private
