@@ -1,1 +1,23 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  <h1 class="display-4">Edit Step</h1>
+</div>
+<hr>
+<div class="container">
+  <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input id="hidden" type="hidden" name="step[bake_id]" value=<%=@bake.id%>>
+    <div class="form-group">
+      <label for="action">Action:</label>
+      <input id="action" class="form-control" name="step[action]" type="text" value="<%=@step.action%>">
+    </div>
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input id="time" class="form-control" name="step[time]" type="text" value="<%=@step.time%>">
+    </div>
+    <div class="form-group">
+      <label for="note">Note:</label>
+      <textarea id="note" class="form-control" name="step[note]"><%=@step.note%></textarea>
+    </div>
+    <button id="edit step" type="submit" class="btn btn-primary">Edit Step</button>
+  </form>
+</div>
