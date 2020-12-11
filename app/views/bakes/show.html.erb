@@ -1,32 +1,53 @@
 <div class="container">
   <h1 class="display-4">
-    Baking a <%=@recipe.name%>
-    <br>
-    <%=@bake.date%>
+    Baking a <%=@bake.weight%>g <%=@recipe.name%> on <%=@bake.date%>
   </h1 class="display-4">
 </div>
 <hr>
 <div class="container">
-  <h3 class="lead">Recipe:</h3>
-  <ul class="lead">
-    <%@recipe.ingredients.each do |ingredient|%>
-      <li><%=ingredient.name%></li>
-    <%end%>
-  </ul>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Recipe:</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th scope="col">Ingredient</th>
+        <th scope="col">Weight (g)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@recipe.ingredients.each do |ingredient|%>
+        <tr>
+        <td><%=ingredient.name%></td>
+        <td><%=BakerPercentage.find_by(user_id: @user.id, recipe_id: @recipe.id, ingredient_id: ingredient.id).percentage/100 * @bake.weight%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
 <%if @bake.steps.count > 0%>
   <div class="container">
-    <h3 class="lead">Steps:</h3>
-    <%@bake.steps.each do |step|%>
-      <div class="row">
-        <div class="col-4">
-          <p class="lead"><a href="/bakes/<%=@bake.id%>/steps/<%=step.id%>"><%=step.action%></a></p>
-        </div>
-        <div class="col-4">
-          <p class="lead"><%=step.time%></p>
-        </div>
-      </div>
-    <%end%>
+    <table class="table">
+      <thead class="thead-dark">
+        <th>Steps:</th>
+        <th></th>
+      </thead>
+      <thead>
+        <th>Action</th>
+        <th>Time</th>
+      </thead>
+      <tbody>
+      <%@bake.steps.each do |step|%>
+        <tr>
+          <td><a href="/bakes/<%=@bake.id%>/steps/<%=step.id%>"><%=step.action%></a></td>
+          <td><%=step.time%></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
   </div>
   <hr>
 <%end%>
