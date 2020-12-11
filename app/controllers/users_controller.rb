@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   get "/users/login" do
     get_success_msg
     get_errors
-    erb :"/users/login"
+    erb :"/users/login/html"
   end
 
   delete "/users/logout" do
