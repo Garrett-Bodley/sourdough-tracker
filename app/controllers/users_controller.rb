@@ -89,9 +89,4 @@ class UsersController < ApplicationController
     @success = session[:success_msg]
     session.delete(:success_msg)
   end
-
-  def get_errors
-    @errors = session[:errors]
-    session.delete(:errors)
-  end
 end

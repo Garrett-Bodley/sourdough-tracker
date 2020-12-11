@@ -24,4 +24,9 @@ class ApplicationController < Sinatra::Base
     @user
   end
 
+  def get_errors
+    @errors = session[:errors]
+    session.delete(:errors)
+  end
+
 end
