@@ -8,12 +8,17 @@ class BakesController < ApplicationController
 
   # GET: /bakes/new
   get "/bakes/new" do
+    get_errors
     @recipes = set_user.recipes
     erb :"/bakes/new.html"
   end
 
   # POST: /bakes
   post "/bakes" do
+    if params[:bake][:recipe] = "..." || params[:bake][:weight].empty?
+      session[:errors] = "Please fill out every field"
+      redirect "/bakes/new"
+    end
     bake = Bake.create(params[:bake])
     redirect "/bakes/#{bake.id}"
   end
