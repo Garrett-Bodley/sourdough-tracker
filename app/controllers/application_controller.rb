@@ -10,8 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    set_user
-    erb :welcome
+     if set_user
+      redirect "/users/#{@user.id}"
+     else
+      redirect "/users/login"
+     end
   end
 
   private
