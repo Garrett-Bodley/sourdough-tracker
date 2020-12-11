@@ -4,6 +4,7 @@
 <hr>
 <div class="container">
   <h3>Please Specify A Baker's Percentages For Each Ingredient</h3>
+  <br>
   <form method="POST" action="/recipes/<%=@recipe.slug%>/percentages">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <%@ingredients.each do |ingredient|%>
