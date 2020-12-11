@@ -3,7 +3,7 @@
 </div>
 <hr>
 <div class="container">
-  <form method="POST" action="/steps">
+  <form method="POST" action="/bakes/<%=@bake.id%>/steps">
     <input id="hidden" type="hidden" name="step[bake_id]" value=<%=@bake.id%>>
     <div class="form-group">
       <label for="action">Action:</label>
