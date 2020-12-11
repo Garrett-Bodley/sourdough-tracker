@@ -19,10 +19,10 @@
       </tr>
     </thead>
     <tbody>
-      <%@recipe.ingredients.each do |ingredient|%>
+      <%@recipe.baker_percentages.each do |bp|%>
         <tr>
-        <td><%=ingredient.name%></td>
-        <td><%=BakerPercentage.find_by(user_id: @user.id, recipe_id: @recipe.id, ingredient_id: ingredient.id).percentage/100 * @bake.weight%></td>
+        <td><%=bp.ingredient.name%></td>
+        <td><%=bp.percentify(@bake.weight)%></td>
         </tr>
       <%end%>
     </tbody>
