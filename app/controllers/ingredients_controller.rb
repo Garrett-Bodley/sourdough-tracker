@@ -26,7 +26,7 @@ class IngredientsController < ApplicationController
 
   # GET: /ingredients/5/edit
   get "/ingredients/:slug/edit" do
-    @recipes = set_ingredient.recipes
+    @recipes = set_ingredient.user.recipes
     erb :"/ingredients/edit.html"
   end
 
