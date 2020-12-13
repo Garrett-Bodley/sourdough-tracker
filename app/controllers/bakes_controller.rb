@@ -42,11 +42,13 @@ class BakesController < ApplicationController
 
   # PATCH: /bakes/5
   patch "/bakes/:id" do
+    get_bake.update(sanitize_params(params[:bake]))
     redirect "/bakes/:id"
   end
 
   # DELETE: /bakes/5/delete
   delete "/bakes/:id/delete" do
+    get_bake.destroy
     redirect "/bakes"
   end
 

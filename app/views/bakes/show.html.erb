@@ -52,7 +52,12 @@
   <hr>
 <%end%>
 <div class="container">
-  <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/new">Recipes</a>
-  <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/new">Add a Step</a>
-  <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/edit">Edit Current Bake</a>
+  <div class="d-flex justify-content-end">
+    <a class="btn btn-primary m-1" role="button" href="/bakes/<%=@bake.id%>/steps/new">Add a Step</a>
+    <a class="btn btn-primary m-1" role="button" href="/bakes/<%=@bake.id%>/edit">Edit</a>
+    <form method="POST" class="form form-inline" action="/bakes/<%=@bake.id%>/delete">
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn btn-primary m-1">Delete</button>
+    </form>
+  </div>
 </div>
