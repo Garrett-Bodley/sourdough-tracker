@@ -13,9 +13,8 @@
       <label for="description">Description:</label>
       <textarea id="description" class="form-control" type="textarea" name="ingredient[description]"></textarea>
     </div>
-
-    <h3>Select recipes where this ingredient is used:</h3>
     <%if @recipes.count > 0%>
+      <h3>Select recipes where this ingredient is used:</h3>
       <%@recipes.each do |recipe|%>
         <div class="form-check form-check">
           <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> name="ingredient[recipe_ids][]"> 
