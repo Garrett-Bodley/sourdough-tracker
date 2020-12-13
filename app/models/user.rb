@@ -21,10 +21,11 @@ class User < ActiveRecord::Base
   after_create(:starter_ingredients)
 
   def starter_ingredients
-    self.ingredients << Ingredient.create(name: "Bread Flour", description: "Flour with a higher than average protein content")
-    self.ingredients << Ingredient.create(name: "Starter", description: "A live culture of lactobacilli, acetobacilli, and yeast used as a leavening agent")
-    self.ingredients << Ingredient.create(name: "Whole Wheat Flour", description: "Milled from the entire wheat berry. It absorbs more water and can make the dough stickier when handling")
-    self.ingredients << Ingredient.create(name: "Water", description: "Plain tap water")
-    self.ingredients << Ingredient.create(name: "Salt", description: "Regular table salt")
+    self.add_ingredient(name: "Bread Flour", description: "Bread flour, or strong flour is high in gluten protein, between 11.5% and 13.5% protein. The increased protein binds to the flour to entrap carbon dioxide released by the yeast fermentation process, resulting in a stronger rise and more chewy crumb. Bread flour may be made with a hard spring wheat.")
+    self.add_ingredient(name: "All Purpose Flour", description: 'All-purpose, or "AP flour", is medium in gluten protein content at around 10.5% to 11.5%. It has adequate protein content for many bread and pizza bases.')
+    self.add_ingredient(name: "Starter", description: "A live culture of lactobacilli, acetobacilli, and yeast used as a leavening agent")
+    self.add_ingredient(name: "Whole Wheat Flour", description: "Whole wheat flour is made by milling the entire wheatberry. It contains the natural kernel proportions of bran, endosperm and germ. Typically, it is made from hard red wheat.")
+    self.add_ingredient(name: "Water", description: "Plain tap water")
+    self.add_ingredient(name: "Salt", description: "Regular table salt")
   end
 end
