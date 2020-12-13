@@ -5,7 +5,7 @@
 <div class="container lead">
   <%=@recipe.description%>
 </div>
-<div class="container">
+<div class="container lead">
   <table class="table">
     <br>
     <thead class="thead-dark">
@@ -16,8 +16,8 @@
       <%@recipe.ingredients.each do |ingredient|%>
         <tr>
         <td><a class="col-4" href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></td>
-        <%if BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id)%>
-          <td><%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage%></td>
+        <%if ingredient.baker_percentages.find{|bp| bp.recipe_id == @recipe.id}%>
+          <td><%=ingredient.baker_percentages.find{|bp| bp.recipe_id == @recipe.id}.percentage%></td>
         <%else%>
           <td>No Percentage Given</td>
         <%end%>
@@ -27,11 +27,10 @@
   </table>
 </div>
 <hr>
-<div class="container">
+<div class="container d-flex justify-content-end">
   <form method="POST" action="/recipes/<%=@recipe.slug%>/delete">
     <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/edit">Edit Recipe</a>
-    <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/percentages/edit">Edit Ingredient Percentages</a>
-    <a class="btn btn-primary" role="button" href='/ingredients/new'>Create a New Ingredient</a>
+    <a class="btn btn-primary" role="button" href="/recipes/<%=@recipe.slug%>/percentages/edit">Edit Percentages</a>
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input id="Delete" class="btn btn-primary" type="submit" value="Delete Recipe">
   </form>
