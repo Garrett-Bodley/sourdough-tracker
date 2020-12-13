@@ -32,4 +32,10 @@ class ApplicationController < Sinatra::Base
     session.delete(:errors)
   end
 
+  def sanitize_params(params)
+    params.each_value do |value|
+      value.gsub!(/<[\/]*[\w]+>/, "")
+    end
+  end
+
 end
