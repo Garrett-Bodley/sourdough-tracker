@@ -11,17 +11,17 @@
       </tr>
     </thead>
     <tbody>
-    <%@ingredients.each do |ingredient|%>
-          <tr>
-            <a href="/ingredients/<%=ingredient.slug%>">
-              <td>
-                <a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a>
-              </td>
-              <td>
-                <%=ingredient.description%>
-              </td>
-            </a>
-          </tr>
+    <%if @ingredients.count > 0%>
+      <%@ingredients.each do |ingredient|%>
+            <tr>
+              <a href="/ingredients/<%=ingredient.slug%>">
+                <td><a href="/ingredients/<%=ingredient.slug%>"><%=ingredient.name%></a></td>
+                <td><%=ingredient.description%></td>
+              </a>
+            </tr>
+      <%end%>
+    <%else%>
+      <td>No Ingredients</td>
     <%end%>
     </tbody>
   </table>

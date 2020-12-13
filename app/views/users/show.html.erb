@@ -15,8 +15,12 @@
       <th scope="col">Recipes:</th>
     </thead>
     <tbody>
-      <%@user.recipes.each do |recipe|%>
-        <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </td>
+      <%if @user.recipes.count < 0%>
+        <%@user.recipes.each do |recipe|%>
+          <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </td>
+        <%end%>
+      <%else%>
+        <td>No recipes</td>
       <%end%>
     </tbody>
   </table>
@@ -53,21 +57,25 @@
       </tr>
     </thead>
     <tbody>
-      <%@user.bakes.each do |bake|%>
-        <tr>
-          <td><a href="/recipes/<%=bake.recipe.slug%>"><%=bake.recipe.name%></a></td>
-          <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
-        </tr>
+      <%if @user.bakes.count > 0%>
+        <%@user.bakes.each do |bake|%>
+          <tr>
+            <td><a href="/recipes/<%=bake.recipe.slug%>"><%=bake.recipe.name%></a></td>
+            <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
+          </tr>
+        <%end%>
+      <%else%>
+        <td>No bakes</td>
       <%end%>
     </tbody>
   </table>
   <div class="container d-flex justify-content-end">
-    <a class="btn btn-primary" role="button" href="/bakes/new">New Bake</a>
+    <a class="btn btn-primary" role="button" href="/bakes/new">Add a New Bake</a>
   </div>
   <hr>
-  <div class="form-group d-flex justify-content-end">
+  <div class="form-group m-3 d-flex justify-content-end">
     <form method="GET" action="/users/<%=@user.id%>/edit">
-      <button id="edit" class="btn btn-primary m-1" type="submit">Edit User Info</button>
+      <button id="edit" class="btn btn-primary" type="submit">Edit User Info</button>
     </form>
   </div>
 </div>

@@ -9,9 +9,13 @@
       <th scope="col">Description</th>
     </thead>
     <tbody>
-      <%@recipes.each do |recipe|%>
-        <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td>
-        <td><%=recipe.description%></td>
+      <%if @recipes.count > 0%>
+        <%@recipes.each do |recipe|%>
+          <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td>
+          <td><%=recipe.description%></td>
+        <%end%>
+      <%else%>
+        <td>No Recipes</td>
       <%end%>
     </tbody>
   </table>

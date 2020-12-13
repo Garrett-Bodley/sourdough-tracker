@@ -11,11 +11,15 @@
       </tr>
     </thead>
     <tbody>
-      <%@bakes.each do |bake|%>
-        <tr>
-          <td><a href="/bakes/<%=bake.id%>"><%=bake.recipe.name%></a></td>
-          <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
-        </tr>
+    <%if @bakes.count > 0%>
+        <%@bakes.each do |bake|%>
+          <tr>
+            <td><a href="/bakes/<%=bake.id%>"><%=bake.recipe.name%></a></td>
+            <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
+          </tr>
+        <%end%>
+      <%else%>
+        <td>No bakes</td>
       <%end%>
     </tbody>
   </table>
