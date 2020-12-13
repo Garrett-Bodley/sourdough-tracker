@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
 
   def sanitize_params(params)
     params.each_value do |value|
-      value.gsub!(/<[\/]*[\w]+>/, "")
+      value.gsub!(/<[\/]*[\w]+>/, "") unless value.class != String
     end
   end
 
