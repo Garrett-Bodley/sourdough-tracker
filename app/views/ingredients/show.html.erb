@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <p class="lead">
-    <%=@ingredient.description.capitalize rescue ""%>
+    <%=@ingredient.description rescue ""%>
   </p>
 </div>
 <%if @recipes.count > 0%>
@@ -24,11 +24,13 @@
   </div>
 <%end%>
 <div class="container">
-  <form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
+  <div class="d-flex justify-content-end">
+    <form method="POST" action="/ingredients/<%=@ingredient.slug%>/delete">
       <a class="btn btn-primary" role="button" href="/ingredients/<%=@ingredient.slug%>/edit">Edit Ingredient</a>
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input id="Delete" class="btn btn-primary" type="submit" value="Delete Ingredient">
-  </form>
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input id="Delete" class="btn btn-primary" type="submit" value="Delete Ingredient">
+    </form>
+  </div>
 </div>
 
 

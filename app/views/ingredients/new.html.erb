@@ -15,14 +15,16 @@
     </div>
 
     <h3>Select recipes where this ingredient is used:</h3>
-    <p>
-    <%@recipes.each do |recipe|%>
-      <div class="form-check form-check-inline">
-        <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> name="ingredient[recipe_ids][]"> 
-        <label class="form-check-label" for=<%=recipe.id%>> <%=recipe.name%></label>
-      </div>
+    <%if @recipes.count > 0%>
+      <%@recipes.each do |recipe|%>
+        <div class="form-check form-check">
+          <input type="checkbox" id=<%=recipe.id%>  class="form-check-input" value=<%=recipe.id%> name="ingredient[recipe_ids][]"> 
+          <label class="form-check-label" for=<%=recipe.id%>> <%=recipe.name%></label>
+        </div>
+      <%end%>
     <%end%>
-    </p>
-    <button id="make ingredient" class="btn btn-primary" type="submit">Add Ingredient</button>
+    <div class="d-flex justify-content-end">
+      <button id="make ingredient" class="btn btn-primary" type="submit">Add Ingredient</button>
+    </div>
   </form>
 </div>
