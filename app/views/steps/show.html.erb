@@ -9,7 +9,7 @@
     <p class="lead"><%=@step.time%></p>
   <%end%>
 </div>
-<div class="container">
+<div class="container d-flex justify-content-end">
   <form method="POST" action="/bakes/<%=@bake.id%>/steps/<%=@step.id%>">
     <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>">Return to Bake Sheet</a>
     <a class="btn btn-primary" role="button" href="/bakes/<%=@bake.id%>/steps/<%=@step.id%>/edit">Edit Step</a>
