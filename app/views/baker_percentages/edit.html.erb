@@ -10,9 +10,9 @@
     <%@ingredients.each do |ingredient|%>
 
       <div class="form-group row">
-        <label for="<%=ingredient.id%>" class="col-sm-2 col-form-label"><%=ingredient.name%> percentage:</label>
-        <div class="col-sm-10">
-          <input type="number" class="form-control" id="<%=ingredient.id%>" name="baker_percentage[][percentage]" value=<%=BakerPercentage.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id).percentage rescue ""%>>
+        <label for="<%=ingredient.id%>" class="col-3 col-form-label"><%=ingredient.name%>:</label>
+        <div class="col-9">
+          <input type="number" class="form-control" id="<%=ingredient.id%>" name="baker_percentage[][percentage]" value=<%=ingredient.baker_percentages.find{|bp| bp.recipe_id == @recipe.id}.percentage rescue ""%>>
           <input type="hidden" name="baker_percentage[][ingredient_id]" value=<%=ingredient.id%>>
           <input type="hidden" name="baker_percentage[][recipe_id]" value=<%=@recipe.id%>>
           <input type="hidden" name="baker_percentage[][user_id]" value=<%=@user.id%>>
