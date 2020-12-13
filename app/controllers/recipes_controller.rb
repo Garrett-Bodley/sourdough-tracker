@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
 
   # PATCH: /recipes/country-loaf
   patch "/recipes/:slug" do
-    set_recipe.updates(sanitize_params(params[:recipe]))
+    set_recipe.update(sanitize_params(params[:recipe]))
     redirect "/recipes/#{@recipe.slug}"
   end
 
