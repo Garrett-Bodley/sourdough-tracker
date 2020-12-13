@@ -2,7 +2,7 @@
   <h1 class="display-4">Create a new Recipe:</h1>
 </div>
 <hr>
-<div class="container">
+<div class="container lead">
   <form method="POST" action="/recipes">
     <input id="hidden" type="hidden" name="recipe[user_id]" value=<%=@user.id%>>
     <div class="form-group">
@@ -13,16 +13,20 @@
       <label for="description">Description:</label>
       <textarea id="description" class="form-control" type="textarea" name="recipe[description]"></textarea>
     </div>
-    
+    <div class="form-group">
     <h4>Select Ingredients used in this recipe:</h4>
-    <p>
       <%@ingredients.each do |ingredient|%>
-        <input type="checkbox" id=<%=ingredient.id%> value=<%=ingredient.id%> name="recipe[ingredient_ids][]"> 
-        <label class="form-check-label" for=<%=ingredient.id%>><%=ingredient.name%></label>
+        <div class="form-check">
+          <input type="checkbox" id=<%=ingredient.id%>  class="form-check-input" value=<%=ingredient.id%> name="recipe[ingredient_ids]][]">
+          <label class="form-check-label" for=<%=ingredient.id%>> <%=ingredient.name%></label>
+        </div>
       <%end%>
-    </p>
-
-    <button id="create recipe" class="btn btn-primary" type="submit">Create Recipe</button>
-    <a class="btn btn-primary" role="button" href='/ingredients/new'>Create a New Ingredient</a>
+    </div>
+    <div class="form-group">
+      <div class="d-flex justify-content-end">
+        <button id="create recipe" class="btn btn-primary m-1" type="submit">Create Recipe</button>
+        <a class="btn btn-primary m-1" role="button" href='/ingredients/new'>Create a New Ingredient</a>
+      </div>
+    </div>
   </form>
 </div>
