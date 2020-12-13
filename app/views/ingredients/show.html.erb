@@ -1,11 +1,11 @@
 <div class="container">
   <h1 class="display-4"><%=@ingredient.name%></h1>
 </div>
-<div class="container">
-  <p class="lead">
-    <%=@ingredient.description rescue ""%>
-  </p>
+<hr>
+<div class="container lead">
+  <%=@ingredient.description rescue ""%>
 </div>
+<br>
 <%if @recipes.count > 0%>
   <div class="container">
     <table class="table lead">
