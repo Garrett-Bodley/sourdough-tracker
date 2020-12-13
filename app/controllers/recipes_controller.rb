@@ -14,34 +14,31 @@ class RecipesController < ApplicationController
 
   # POST: /recipes
   post "/recipes" do
-    set_user.add_recipe(params[:recipe])
+    set_user.add_recipe(sanitize_params(params[:recipe]))
     redirect "/recipes/#{@user.recipes.last.slug}/percentages/new"
   end
 
   # GET: /recipes/country-loaf/percentages/edit
   get "recipes/:slug/percentages/edit" do
-    set_user
     set_recipe
     erb :'/recipes/percentages/edit.html'
   end
 
   # GET: /recipes/country-loaf
   get "/recipes/:slug" do
-    set_user
     set_recipe
     erb :"/recipes/show.html"
   end
 
   # GET: /recipes/country-loaf/edit
   get "/recipes/:slug/edit" do
-    @ingredients = set_user.ingredients
-    set_recipe
+    @ingredients = set_recipe.user.ingredients
     erb :"/recipes/edit.html"
   end
 
   # PATCH: /recipes/country-loaf
   patch "/recipes/:slug" do
-    set_recipe.update(params[:recipe])
+    set_recipe.updates(sanitize_params(params[:recipe]))
     redirect "/recipes/#{@recipe.slug}"
   end
 
@@ -54,7 +51,11 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find_by_slug(params[:slug])
+    if @recipe = Recipe.find_by_slug_and_user_id(slug: params[:slug], user_id: set_user.id)
+      return @recipe
+    else
+      redirect "/recipes"
+    end
   end
 
 end

@@ -19,26 +19,24 @@ class BakesController < ApplicationController
       session[:errors] = "Please fill out every field"
       redirect "/bakes/new"
     end
-    bake = Bake.create(params[:bake])
+    bake = Bake.create(sanitize_params(params[:bake]))
     redirect "/bakes/#{bake.id}"
   end
 
   patch "/bakes/:id" do
-    get_bake.update(params[:bake])
+    get_bake.update(sanitize_params(params[:bake]))
     redirect "/bakes/#{@bake.id}"
   end
 
   # GET: /bakes/5
   get "/bakes/:id" do
-    set_user
     @recipe = get_bake.recipe
     erb :"/bakes/show.html"
   end
 
   # GET: /bakes/5/edit
   get "/bakes/:id/edit" do
-    @recipes = set_user.recipes
-    get_bake
+    @recipes = get_bake.user.recipes
     erb :"/bakes/edit.html"
   end
 
@@ -55,7 +53,7 @@ class BakesController < ApplicationController
   private
 
   def get_bake
-    @bake = Bake.find(params[:id])
+    @bake = Bake.find_by(id: params[:id], user_id: set_user.id)
   end
 
 end

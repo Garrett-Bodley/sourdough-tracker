@@ -14,27 +14,25 @@ class IngredientsController < ApplicationController
 
   # POST: /ingredients
   post "/ingredients" do
-    set_user.add_ingredient(params[:ingredient])
+    set_user.add_ingredient(sanitize_params(params[:ingredient]))
     redirect "/ingredients"
   end
 
   # GET: /ingredients/5
   get "/ingredients/:slug" do
-    set_user
     @recipes = set_ingredient.recipes
     erb :"/ingredients/show.html"
   end
 
   # GET: /ingredients/5/edit
   get "/ingredients/:slug/edit" do
-    set_user
     @recipes = set_ingredient.recipes
     erb :"/ingredients/edit.html"
   end
 
   # PATCH: /ingredients/5
   patch "/ingredients/:slug" do
-    set_ingredient.update(params[:ingredient])
+    set_ingredient.update(sanitize_params(params[:ingredient]))
     redirect "/ingredients/#{@ingredient.slug}"
   end
 
@@ -47,7 +45,11 @@ class IngredientsController < ApplicationController
   private
 
   def set_ingredient
-    @ingredient = Ingredient.find_by_slug(params[:slug])
+    if @ingredient = Ingredient.find_by_slug_and_user_id(slug: params[:slug], user_id: set_user.id)
+      return @ingredient
+    else
+      redirect "/ingredients"
+    end
   end
 
 end
