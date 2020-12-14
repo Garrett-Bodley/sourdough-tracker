@@ -15,7 +15,7 @@
       <th scope="col">Recipes:</th>
     </thead>
     <tbody>
-      <%if @user.recipes.count < 0%>
+      <%if @user.recipes.count > 0%>
         <%@user.recipes.each do |recipe|%>
           <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </td>
         <%end%>
