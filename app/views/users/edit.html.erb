@@ -13,8 +13,8 @@
   <form method="POST" action="/users/<%=@user.id%>">
   <input id="hidden" type="hidden" name="_method" value="patch">
     <div class="form-group">
-    <label for="username">Username:</label>
-    <input id="username" type="text" class="form-control" name="user[username]" value="<%=@user.username%>">
+      <label for="username">Username:</label>
+      <input id="username" type="text" class="form-control" name="user[username]" value="<%=@user.username%>">
     </div>
     <div class="form-group">
       <label for="old_password">Old Password:</label>
