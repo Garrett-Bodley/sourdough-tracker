@@ -43,7 +43,7 @@ class StepsController < ApplicationController
   end
 
   def set_step
-    @step = Step.find_by(bake_id: get_bake.id)
+    @step = Step.find_by(id: params[:step_id], bake_id: get_bake.id)
   end
 
 end
