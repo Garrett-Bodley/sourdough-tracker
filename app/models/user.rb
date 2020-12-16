@@ -6,16 +6,15 @@ class User < ActiveRecord::Base
   has_many :baker_percentages, dependent: :destroy
   has_secure_password
   validates :username, uniqueness: :true, presence: :true
-  validates :password, presence: :true
 
   def add_ingredient(ingredient_hash)
     #creates a new ingredient instance associated with the user unless one with the same name exists
-    self.ingredients << Ingredient.create(ingredient_hash) unless self.ingredients.any?{|i| i.name == ingredient_hash[:name]}
+    self.ingredients << Ingredient.create(ingredient_hash) unless self.ingredients.any?{|i| i.name.downcase == ingredient_hash[:name].downcase}
   end
 
   def add_recipe(recipe_hash)
     #creates a new recipe instance associated with the user unless one with the same name exists
-    self.recipes << Recipe.create(recipe_hash) unless self.recipes.any?{|r| r.name == recipe_hash[:name]}
+    self.recipes << Recipe.create(recipe_hash) unless self.recipes.any?{|r| r.name.downcase == recipe_hash[:name].downcase}
   end
 
   after_create(:starter_ingredients)
