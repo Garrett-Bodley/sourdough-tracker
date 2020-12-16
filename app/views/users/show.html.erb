@@ -15,11 +15,10 @@
       <th scope="col">Recipes:</th>
     </thead>
     <tbody>
-      <%if @user.recipes.count > 0%>
-        <%@user.recipes.each do |recipe|%>
-          <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a> </td>
-        <%end%>
-      <%else%>
+      <%@user.recipes.each do |recipe|%>
+        <tr><td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td></tr>
+      <%end%>
+      <%if @user.recipes.size == 0%>
         <td>No recipes</td>
       <%end%>
     </tbody>
@@ -57,14 +56,13 @@
       </tr>
     </thead>
     <tbody>
-      <%if @user.bakes.count > 0%>
-        <%@user.bakes.each do |bake|%>
-          <tr>
-            <td><a href="/recipes/<%=bake.recipe.slug%>"><%=bake.recipe.name%></a></td>
-            <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
-          </tr>
-        <%end%>
-      <%else%>
+      <%@user.bakes.each do |bake|%>
+        <tr>
+          <td><a href="/recipes/<%=bake.recipe.slug%>"><%=bake.recipe.name%></a></td>
+          <td><a href="/bakes/<%=bake.id%>"><%=bake.date%></a></td>
+        </tr>
+      <%end%>
+      <%if @user.bakes.size == 0%>
         <td>No bakes</td>
       <%end%>
     </tbody>
