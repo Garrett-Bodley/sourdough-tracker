@@ -20,11 +20,15 @@ class ApplicationController < Sinatra::Base
   private
 
   def set_user
-    unless @user = User.find_by_id(session[:user_id])
+    unless current_user
       session[:errors] = "Please Log In"
       redirect "/users/login"
     end
-    @user
+    current_user
+  end
+
+  def current_user
+    @user ||= User.find_by_id(session[:user_id])
   end
 
   def get_errors
