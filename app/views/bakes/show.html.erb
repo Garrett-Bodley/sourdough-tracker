@@ -10,12 +10,14 @@
       <tr>
         <th scope="col">Recipe:</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <thead>
       <tr>
         <th scope="col">Ingredient</th>
         <th scope="col">Weight (g)</th>
+        <th scope="col">Percentage</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +25,7 @@
         <tr>
         <td><%=bp.ingredient.name%></td>
         <td><%=bp.percentify(@bake.weight)%></td>
+        <td><%=bp.percentage%>%</td>
         </tr>
       <%end%>
     </tbody>
