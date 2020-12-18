@@ -30,8 +30,12 @@ class BakesController < ApplicationController
 
   # GET: /bakes/5
   get "/bakes/:id" do
-    @recipe = get_bake.recipe
-    erb :"/bakes/show.html"
+    if get_bake
+      @recipe = @bake.recipe
+      erb :"/bakes/show.html"
+    else redirect
+      redirect "/bakes"
+    end
   end
 
   # GET: /bakes/5/edit
@@ -55,7 +59,7 @@ class BakesController < ApplicationController
   private
 
   def get_bake
-    @bake = Bake.find_by(id: params[:id], user_id: set_user.id)
+    @bake = Bake.find_by(id: params[:id], user_id: set_user.id) rescue false
   end
 
 end
