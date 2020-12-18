@@ -15,8 +15,10 @@
       </thead>
       <tbody>
       <%@recipes.each do |recipe|%>
+        <tr>
         <td><a href="/recipes/<%=recipe.slug%>"><%=recipe.name%></a></td>
         <td><%=recipe.description%></td>
+        </tr>
       <%end%>
       </tbody>
     </table>
