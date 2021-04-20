@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     erb :"/users/login.html"
   end
 
+  get "/users" do
+    @users = User.all
+    erb :"/users/index.html"
+  end
+
+  get "/users/:id/recipes" do 
+    @user = User.find(params[:id])
+    erb :"/users/recipes.html"
+  end
+
   delete "/users/logout" do
     session.clear
     session[:success_msg] = "Succesfully Logged Out"

@@ -1,0 +1,7 @@
+<h3><%=@user.username%></h3>
+<hr>
+<ol>
+<%@user.recipes.each do |recipe|%>
+  <li><%=recipe.name%></li>
+<%end%>
+</ol>

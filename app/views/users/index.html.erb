@@ -1,0 +1,9 @@
+<h3>List of Users:</h3>
+
+<ol>
+<%@users.each do |user|%>
+  <%unless current_user == user%>
+    <li><a href="/users/<%=user.id%>/recipes"><%=user.username%> - <%=user.recipes.count%></a></li>
+  <%end%>
+<%end%>
+</ol>
