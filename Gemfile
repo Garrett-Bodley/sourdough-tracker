@@ -9,6 +9,7 @@ gem 'thin'
 gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'dotenv'
+gem 'foreman'
 
 group :development do
   gem 'sqlite3', '~> 1.3.6'
