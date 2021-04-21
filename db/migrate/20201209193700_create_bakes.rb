@@ -1,4 +1,4 @@
-class CreateBakes < ActiveRecord::Migration
+class CreateBakes < ActiveRecord::Migration[6.1]
   def change
     create_table :bakes do |t|
       t.string :date

@@ -1,4 +1,4 @@
-class AddUserIdToIngredients < ActiveRecord::Migration
+class AddUserIdToIngredients < ActiveRecord::Migration[6.1]
   def change
     add_column :ingredients, :user_id, :integer
   end
