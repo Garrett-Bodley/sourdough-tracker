@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'activerecord', '~> 6.1', '>= 6.1.3.1'
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.22'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
@@ -12,7 +12,7 @@ gem 'dotenv'
 gem 'foreman'
 
 group :development do
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3', '~> 1.4', '>= 1.4.2'
   gem 'tux'
   gem 'shotgun'
   gem 'pry'
