@@ -10,10 +10,10 @@ gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'dotenv'
 gem 'foreman'
+gem 'tux'
 
 group :development do
   gem 'sqlite3', '~> 1.4', '>= 1.4.2'
-  gem 'tux'
   gem 'shotgun'
   gem 'pry'
 end
