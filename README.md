@@ -39,7 +39,7 @@ shotgun
 
 * Website: garrett-bodley.medium.com
 * Github: [@Garrett-Bodley](https://github.com/Garrett-Bodley)
-* LinkedIn: [@Garrett Bodley](https://linkedin.com/in/Garrett Bodley)
+* LinkedIn: [@Garrett Bodley](https://linkedin.com/in/garrett-bodley)
 
 ## Show your support
 
